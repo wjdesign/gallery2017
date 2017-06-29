@@ -93,6 +93,12 @@ a.text-title:hover {
     text-decoration: none;
 }
 
+@media only screen and (max-width: 767px) {
+    #intro-bar.intro-bar {
+        display: none;
+    }
+}
+
 @media only screen and (max-width: 666px) {
 
     #filters {
