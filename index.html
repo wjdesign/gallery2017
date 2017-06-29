@@ -2,11 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>WJDesign 2017 Gallery</title>
 <meta name="keywords" content="" />
 <!--<meta name="description" content="jquery.mixitup图片分类插件选项卡形式图片过滤筛选器效果。" />-->
+<link type="text/css" rel="stylesheet" href="css/reset.css">
 <link type="text/css" rel="stylesheet" href="css/bootstrap.css">
+<link type="text/css" rel="stylesheet" href="css/font-awesome.min.css">
+<link type="text/css" rel="stylesheet" href="css/hover.css">
 <link type="text/css" rel="stylesheet" href="css/layout.css">
+<link type="text/css" rel="stylesheet" href="css/jquery.fancybox.css">
+
 <link type="text/css" rel="stylesheet" href="css/main.css">
 
 <!--[if lt IE 9]>
@@ -22,19 +28,58 @@
 <script type="text/javascript" src="js/jquery.mixitup.min.js"></script>
 <script type="text/javascript">
 $(function(){
+    
+    $(document).ready(function () {
+        //<![CDATA[
+        $(function () {
+            $(".portfolio-wrapper img").each(function() {
+                var parent = $(this).parent();
+                if (parent[0].tagName == "A") {
+                    parent.attr({
+                        "class": "fancybox",
+                        "rel": "gallery"
+                    });
+                } else {
+                    parent.wrap("<a class='fancybox' rel='gallery' href='" + $(this).attr("src") + "'></a>")
+                }
+            });
+            $(".fancybox").fancybox({
+                image : {
+                    protect: true
+                },
+
+                prevEffect : 'none',
+                nextEffect : 'none',
+
+                closeBtn  : true,
+                arrows    : true,
+                nextClick : true,
+
+                helpers : {
+                    thumbs : {
+                        width  : 50,
+                        height : 50
+                    }
+                }
+
+            });
+        });
+//]]>
+    })
 
 	var filterList = {
 
 		init:function(){
 			// MixItUp plugin
 			$('#portfoliolist').mixitup({
+                navigation: false,
 				targetSelector: '.portfolio',
 				filterSelector: '.filter',
 				effects: ['fade'],
 				easing: 'snap',
 				// call the hover effect
 				onMixEnd: filterList.hoverEffect()
-			});				
+			});
 
 		},
 		
@@ -59,76 +104,55 @@ $(function(){
 </head>
 <body>
 <div id="header">
+	<a href="#filters-s" class="btn btn-info" data-toggle="collapse"><i class="fa fa-bars"></i></a>
+
+	<!--Mobile Navi-->
+	<ul id="filters-s" class="clearfix collapse">
+		<li><span class="filter active" data-filter="poster photo drawing logo card">所有作品</span></li>
+		<li><span class="filter" data-filter="poster">海報系列</span></li>
+		<li><span class="filter" data-filter="photo">攝影系列</span></li>
+		<li><span class="filter" data-filter="drawing">插畫系列</span></li>
+		<li><span class="filter" data-filter="logo">Logo系列</span></li>
+		<li><span class="filter" data-filter="card">名片系列</span></li>
+		<li><span class="filter" data-filter="illustrator">向量系列</span></li>
+	</ul>
+
 	<div class="container">
 
 		<ul id="filters" class="clearfix">
-			<li><span class="filter active" data-filter="app card icon logo web">All</span></li>
-			<li><span class="filter" data-filter="app">App</span></li>
-			<li><span class="filter" data-filter="card">Card</span></li>
-			<li><span class="filter" data-filter="icon">Icon</span></li>
-			<li><span class="filter" data-filter="logo">Logo</span></li>
-			<li><span class="filter" data-filter="web">Web</span></li>
-			<li><span class="filter" data-filter="game">Game</span></li>
+			<li><span class="filter hvr-underline-from-left active" data-filter="poster photo drawing logo card">所有作品</span></li>
+			<li><span class="filter hvr-underline-from-left" data-filter="poster">海報系列</span></li>
+			<li><span class="filter hvr-underline-from-left" data-filter="photo">攝影系列</span></li>
+			<li><span class="filter hvr-underline-from-left" data-filter="drawing">插畫系列</span></li>
+			<li><span class="filter hvr-underline-from-left" data-filter="logo">Logo系列</span></li>
+			<li><span class="filter hvr-underline-from-left" data-filter="card">名片系列</span></li>
+			<li><span class="filter hvr-underline-from-left" data-filter="illustrator">向量系列</span></li>
 		</ul>
+
 	</div>
 </div>
 <div id="main">
-	<div class="container">
+	<div class="container portfolio-container">
 		<div class="row">
 			<div id="portfoliolist">
 
-				<div class="col-md-3 col-sm-6 col-xs-12 portfolio game" data-cat="game">
+				<div class="col-md-3 col-sm-6 col-xs-12 portfolio illustrator" data-cat="illustrator">
 					<div class="portfolio-wrapper">
-						<img src="img/portfolios/logo/5.jpg" alt=""/>
+						<img src="img/portfolios/illustrator/1.jpg" alt=""/>
 						<div class="label">
 							<div class="label-text"><a class="text-title">Bird Document</a><span
-									class="text-category">Logo</span></div>
+									class="text-category">illustrator</span></div>
 							<div class="label-bg"></div>
 						</div>
 					</div>
 				</div>
 
-				<div class="col-md-3 col-sm-6 col-xs-12 portfolio app" data-cat="app">
+				<div class="col-md-3 col-sm-6 col-xs-12 portfolio poster" data-cat="poster">
 					<div class="portfolio-wrapper">
-						<img src="img/portfolios/app/1.jpg" alt=""/>
+						<img src="img/portfolios/poster/1.jpg" alt=""/>
 						<div class="label">
 							<div class="label-text"><a class="text-title">Visual Infography</a><span
-									class="text-category">APP</span></div>
-							<div class="label-bg"></div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-md-3 col-sm-6 col-xs-12 portfolio web" data-cat="web">
-					<div class="portfolio-wrapper">
-						<img src="img/portfolios/web/4.jpg" alt=""/>
-						<div class="label">
-							<div class="label-text"><a class="text-title">Sonor's Design</a><span class="text-category">Web design</span>
-							</div>
-							<div class="label-bg"></div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-md-3 col-sm-6 col-xs-12 portfolio card" data-cat="card">
-					<div class="portfolio-wrapper">
-						<img src="img/portfolios/card/1.jpg" alt=""/>
-						<div class="label">
-							<div class="label-text"><a class="text-title">Typography Company</a><span
-									class="text-category">Business card</span>
-							</div>
-							<div class="label-bg"></div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-md-3 col-sm-6 col-xs-12 portfolio app" data-cat="app">
-					<div class="portfolio-wrapper">
-						<img src="img/portfolios/app/3.jpg" alt=""/>
-						<div class="label">
-							<div class="label-text"><a class="text-title">Weatherette</a> <span
-									class="text-category">APP</span>
-							</div>
+									class="text-category">poster</span></div>
 							<div class="label-bg"></div>
 						</div>
 					</div>
@@ -138,19 +162,54 @@ $(function(){
 					<div class="portfolio-wrapper">
 						<img src="img/portfolios/card/4.jpg" alt=""/>
 						<div class="label">
-							<div class="label-text"><a class="text-title">BMF</a> <span
-									class="text-category">Business card</span></div>
+							<div class="label-text"><a class="text-title">Sonor's Design</a><span class="text-category">card</span>
+							</div>
 							<div class="label-bg"></div>
 						</div>
 					</div>
 				</div>
 
-				<div class="col-md-3 col-sm-6 col-xs-12 portfolio card" data-cat="card">
+				<div class="col-md-3 col-sm-6 col-xs-12 portfolio photo" data-cat="photo">
 					<div class="portfolio-wrapper">
-						<img src="img/portfolios/card/5.jpg" alt=""/>
+						<img src="img/portfolios/photo/1.jpg" alt=""/>
+						<div class="label">
+							<div class="label-text"><a class="text-title">Typography Company</a><span
+									class="text-category">photo</span>
+							</div>
+							<div class="label-bg"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-3 col-sm-6 col-xs-12 portfolio poster" data-cat="poster">
+					<div class="portfolio-wrapper">
+						<img src="img/portfolios/poster/3.jpg" alt=""/>
+						<div class="label">
+							<div class="label-text"><a class="text-title">Weatherette</a> <span
+									class="text-category">poster</span>
+							</div>
+							<div class="label-bg"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-3 col-sm-6 col-xs-12 portfolio photo" data-cat="photo">
+					<div class="portfolio-wrapper">
+						<img src="img/portfolios/photo/4.jpg" alt=""/>
+						<div class="label">
+							<div class="label-text"><a class="text-title">BMF</a> <span
+									class="text-category">photo</span></div>
+							<div class="label-bg"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-3 col-sm-6 col-xs-12 portfolio photo" data-cat="photo">
+					<div class="portfolio-wrapper">
+						<img src="img/portfolios/photo/5.jpg" alt=""/>
 						<div class="label">
 							<div class="label-text"><a class="text-title">Techlion</a> <span
-									class="text-category">Business card</span></div>
+									class="text-category">photo</span></div>
 							<div class="label-bg"></div>
 						</div>
 					</div>
@@ -168,23 +227,23 @@ $(function(){
 					</div>
 				</div>
 
-				<div class="col-md-3 col-sm-6 col-xs-12 portfolio app" data-cat="app">
+				<div class="col-md-3 col-sm-6 col-xs-12 portfolio poster" data-cat="poster">
 					<div class="portfolio-wrapper">
-						<img src="img/portfolios/app/2.jpg" alt=""/>
+						<img src="img/portfolios/poster/2.jpg" alt=""/>
 						<div class="label">
 							<div class="label-text"><a class="text-title">Graph Plotting</a> <span
-									class="text-category">APP</span></div>
+									class="text-category">poster</span></div>
 							<div class="label-bg"></div>
 						</div>
 					</div>
 				</div>
 
-				<div class="col-md-3 col-sm-6 col-xs-12 portfolio card" data-cat="card">
+				<div class="col-md-3 col-sm-6 col-xs-12 portfolio photo" data-cat="photo">
 					<div class="portfolio-wrapper">
-						<img src="img/portfolios/card/2.jpg" alt=""/>
+						<img src="img/portfolios/photo/2.jpg" alt=""/>
 						<div class="label">
 							<div class="label-text"><a class="text-title">QR Quick Response</a> <span
-									class="text-category">Business card</span>
+									class="text-category">photo</span>
 							</div>
 							<div class="label-bg"></div>
 						</div>
@@ -214,81 +273,81 @@ $(function(){
 					</div>
 				</div>
 
-				<div class="col-md-3 col-sm-6 col-xs-12 portfolio icon" data-cat="icon">
+				<div class="col-md-3 col-sm-6 col-xs-12 portfolio drawing" data-cat="drawing">
 					<div class="portfolio-wrapper">
-						<img src="img/portfolios/icon/4.jpg" alt=""/>
+						<img src="img/portfolios/drawing/4.jpg" alt=""/>
 						<div class="label">
 							<div class="label-text"><a class="text-title">Domino's Pizza</a> <span
-									class="text-category">Icon</span></div>
+									class="text-category">drawing</span></div>
 							<div class="label-bg"></div>
 						</div>
 					</div>
 				</div>
 
-				<div class="col-md-3 col-sm-6 col-xs-12 portfolio web" data-cat="web">
+				<div class="col-md-3 col-sm-6 col-xs-12 portfolio card" data-cat="card">
 					<div class="portfolio-wrapper">
-						<img src="img/portfolios/web/3.jpg" alt=""/>
+						<img src="img/portfolios/card/3.jpg" alt=""/>
 						<div class="label">
-							<div class="label-text"><a class="text-title">Backend Admin</a> <span class="text-category">Web design</span>
+							<div class="label-text"><a class="text-title">Backend Admin</a> <span class="text-category">card</span>
 							</div>
 							<div class="label-bg"></div>
 						</div>
 					</div>
 				</div>
 
-				<div class="col-md-3 col-sm-6 col-xs-12 portfolio icon" data-cat="icon">
+				<div class="col-md-3 col-sm-6 col-xs-12 portfolio drawing" data-cat="drawing">
 					<div class="portfolio-wrapper">
-						<img src="img/portfolios/icon/1.jpg" alt=""/>
+						<img src="img/portfolios/drawing/1.jpg" alt=""/>
 						<div class="label">
 							<div class="label-text"><a class="text-title">Instagram</a> <span
-									class="text-category">Icon</span>
+									class="text-category">drawing</span>
 							</div>
 							<div class="label-bg"></div>
 						</div>
 					</div>
 				</div>
 
-				<div class="col-md-3 col-sm-6 col-xs-12 portfolio web" data-cat="web">
+				<div class="col-md-3 col-sm-6 col-xs-12 portfolio card" data-cat="card">
 					<div class="portfolio-wrapper">
-						<img src="img/portfolios/web/2.jpg" alt=""/>
+						<img src="img/portfolios/card/2.jpg" alt=""/>
 						<div class="label">
-							<div class="label-text"><a class="text-title">Student Guide</a> <span class="text-category">Web design</span>
+							<div class="label-text"><a class="text-title">Student Guide</a> <span class="text-category">card</span>
 							</div>
 							<div class="label-bg"></div>
 						</div>
 					</div>
 				</div>
 
-				<div class="col-md-3 col-sm-6 col-xs-12 portfolio icon" data-cat="icon">
+				<div class="col-md-3 col-sm-6 col-xs-12 portfolio drawing" data-cat="drawing">
 					<div class="portfolio-wrapper">
-						<img src="img/portfolios/icon/2.jpg" alt=""/>
+						<img src="img/portfolios/drawing/2.jpg" alt=""/>
 						<div class="label">
 							<div class="label-text"><a class="text-title">Scoccer</a> <span
-									class="text-category">Icon</span>
+									class="text-category">drawing</span>
 							</div>
 							<div class="label-bg"></div>
 						</div>
 					</div>
 				</div>
 
-				<div class="col-md-3 col-sm-6 col-xs-12 portfolio icon" data-cat="icon">
+				<div class="col-md-3 col-sm-6 col-xs-12 portfolio drawing" data-cat="drawing">
 					<div class="portfolio-wrapper">
-						<img src="img/portfolios/icon/5.jpg" alt=""/>
+						<img src="img/portfolios/drawing/5.jpg" alt=""/>
 						<div class="label">
 							<div class="label-text"><a class="text-title">3D Map</a> <span
-									class="text-category">Icon</span>
+									class="text-category">drawing</span>
 							</div>
 							<div class="label-bg"></div>
 						</div>
 					</div>
 				</div>
 
-				<div class="col-md-3 col-sm-6 col-xs-12 portfolio web" data-cat="web">
+				<div class="col-md-3 col-sm-6 col-xs-12 portfolio card" data-cat="card">
 					<div class="portfolio-wrapper">
-						<img src="img/portfolios/web/1.jpg" alt=""/>
+						<img src="img/portfolios/card/1.jpg" alt=""/>
 						<div class="label">
 							<div class="label-text"><a class="text-title">Note</a> <span
-									class="text-category">Web design</span>
+									class="text-category">card</span>
 							</div>
 							<div class="label-bg"></div>
 						</div>
@@ -318,24 +377,24 @@ $(function(){
 					</div>
 				</div>
 
-				<div class="col-md-3 col-sm-6 col-xs-12 portfolio icon" data-cat="icon">
+				<div class="col-md-3 col-sm-6 col-xs-12 portfolio drawing" data-cat="drawing">
 					<div class="portfolio-wrapper">
-						<img src="img/portfolios/icon/3.jpg" alt=""/>
+						<img src="img/portfolios/drawing/3.jpg" alt=""/>
 						<div class="label">
 							<div class="label-text"><a class="text-title">Sandwich</a> <span
-									class="text-category">Icon</span>
+									class="text-category">drawing</span>
 							</div>
 							<div class="label-bg"></div>
 						</div>
 					</div>
 				</div>
 
-				<div class="col-md-3 col-sm-6 col-xs-12 portfolio card" data-cat="card">
+				<div class="col-md-3 col-sm-6 col-xs-12 portfolio photo" data-cat="photo">
 					<div class="portfolio-wrapper">
-						<img src="img/portfolios/card/3.jpg" alt=""/>
+						<img src="img/portfolios/photo/3.jpg" alt=""/>
 						<div class="label">
 							<div class="label-text"><a class="text-title">Reality</a> <span
-									class="text-category">Business card</span></div>
+									class="text-category">photo</span></div>
 							<div class="label-bg"></div>
 						</div>
 					</div>
