@@ -103,6 +103,30 @@ $(function(){
 </script>
 </head>
 <body>
+<div id="intro-bar" class="intro-bar">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-1 intro-button">基本資料</div>
+			<div class="col-xs-11 intro-main">
+				<div class="intro-photo"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>//基本資料伸縮
+//	$("#intro-bar").hover(function () {
+//            $(this).animate({right:'0px'},500);
+//    },function () {
+//        $(this).animate({right:'-314px'},500);
+//    });
+
+	$("#intro-bar").hover(function () {
+            $(this).stop().animate({right:'0px'},500);
+    },function () {
+        $(this).stop().animate({right:'-314px'},500);
+    });
+
+</script>
 <div id="header">
 	<a href="#filters-s" class="btn btn-info" data-toggle="collapse"><i class="fa fa-bars"></i></a>
 

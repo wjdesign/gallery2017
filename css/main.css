@@ -3,6 +3,41 @@ body {
     position: relative;
 }
 
+/* intro-bar */
+#intro-bar.intro-bar {
+    display: block;
+    position: fixed;
+    top: 0;
+    right: -314px;
+    width: 350px;
+    height: 100%;
+    z-index:5;
+}
+#intro-bar .intro-button {
+    -webkit-writing-mode: vertical-lr;
+    writing-mode: vertical-lr;
+    font-size: 18px;
+    letter-spacing: 5px;
+    margin-top: 35vh;
+    background: #333;
+    color: #fff;
+    padding: 10px;
+    line-height: 18px;
+    text-align: center;
+    width: 36px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+#intro-bar .intro-main {
+    font-size: 18px;
+    letter-spacing: 2px;
+    height: 100vh;
+    background: #333;
+    color: #fff;
+    padding: 10px;
+    line-height: 18px;
+}
+
 /* Navi */
 #header > a {
     width: 100%;
