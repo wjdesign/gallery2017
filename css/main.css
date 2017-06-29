@@ -16,6 +16,7 @@ body {
     color: #fff;
     background-color: #e95a44;
     border-color: #d62308;
+    z-index: 2;
 }
 #header > a > i {
     line-height: 36px;
@@ -58,7 +59,7 @@ a.text-title:hover {
 }
 
 @media only screen and (max-width: 666px) {
-    
+
     #filters {
         display: none;
     }
