@@ -52,7 +52,7 @@ body {
 .portfolio-wrapper {
     overflow: hidden;
     position: relative !important;
-    background: #666;
+    text-align: center;
     cursor: pointer;
 }
 
