@@ -9,8 +9,8 @@
 <link type="text/css" rel="stylesheet" href="css/reset.css">
 <link type="text/css" rel="stylesheet" href="css/bootstrap.css">
 <link type="text/css" rel="stylesheet" href="css/font-awesome.min.css">
-<link type="text/css" rel="stylesheet" href="css/hover.css">
 <link type="text/css" rel="stylesheet" href="css/layout.css">
+	<link type="text/css" rel="stylesheet" href="css/hover.css">
 <link type="text/css" rel="stylesheet" href="css/jquery.fancybox.css">
 
 <link type="text/css" rel="stylesheet" href="css/main.css">
@@ -106,25 +106,44 @@ $(function(){
 <div id="intro-bar" class="intro-bar">
 	<div class="container">
 		<div class="row">
-			<div class="col-xs-1 intro-button">基本資料</div>
-			<div class="col-xs-11 intro-main">
-				<div class="intro-photo"></div>
+			<div class="intro-button"><i class="fa fa-user-circle"></i>基本資料</div>
+			<div class="intro-main">
+				<div class="intro-photo">
+					<img class="img-responsive img-circle hvr-float-shadow" width="150px" height="150px" src="img/info-photo.png" alt="">
+				</div>
+				<h3>李潔蓉 / Jessica</h3>
+				<p><a href="img/fun_4.jpg" target="_blank">2017年 青春設計展 優選</a></p>
+				<p><a href="http://www.ydf.org.tw/winners/8" target="_blank">2017年 放視大賞 銅獎</a></p>
 			</div>
 		</div>
 	</div>
 </div>
-<script>//基本資料伸縮
-//	$("#intro-bar").hover(function () {
-//            $(this).animate({right:'0px'},500);
-//    },function () {
-//        $(this).animate({right:'-314px'},500);
-//    });
+<script>
 
-	$("#intro-bar").hover(function () {
-            $(this).stop().animate({right:'0px'},500);
-    },function () {
-        $(this).stop().animate({right:'-314px'},500);
-    });
+	//基本資料伸縮
+	if(screen.width > 767) {
+        $("#intro-bar").hover(function () {
+            $(this).stop().animate({right: '0px'}, 500);
+        }, function () {
+            $(this).stop().animate({right: '-314px'}, 500);
+        });
+    } else {
+	    var count = 0;
+        $("#intro-bar").click(function () {
+            count++;
+            //even odd click detect
+            var isEven = function (someNumber) {
+                return (someNumber % 2 === 0) ? true : false;
+            };
+            // on odd clicks do this
+            if (isEven(count) === false) {
+                $(this).stop().animate({right: '-74px'}, 500);
+            } else if (isEven(count) === true) {
+                $(this).stop().animate({right: '-314px'}, 500);
+            }
+            ;
+        });
+    }
 
 </script>
 <div id="header">
@@ -132,24 +151,24 @@ $(function(){
 
 	<!--Mobile Navi-->
 	<ul id="filters-s" class="clearfix collapse">
-		<li><span class="filter active" data-filter="poster photo drawing logo card">所有作品</span></li>
+		<li><span class="filter active" data-filter="poster photo drawing adver cis">所有作品</span></li>
 		<li><span class="filter" data-filter="poster">海報系列</span></li>
 		<li><span class="filter" data-filter="photo">攝影系列</span></li>
 		<li><span class="filter" data-filter="drawing">插畫系列</span></li>
-		<li><span class="filter" data-filter="logo">Logo系列</span></li>
-		<li><span class="filter" data-filter="card">名片系列</span></li>
+		<li><span class="filter" data-filter="adver">廣告系列</span></li>
+		<li><span class="filter" data-filter="cis">CIS系列</span></li>
 		<li><span class="filter" data-filter="illustrator">向量系列</span></li>
 	</ul>
 
 	<div class="container">
 
 		<ul id="filters" class="clearfix">
-			<li><span class="filter hvr-underline-from-left active" data-filter="poster photo drawing logo card">所有作品</span></li>
+			<li><span class="filter hvr-underline-from-left active" data-filter="poster photo drawing adver cis">所有作品</span></li>
 			<li><span class="filter hvr-underline-from-left" data-filter="poster">海報系列</span></li>
 			<li><span class="filter hvr-underline-from-left" data-filter="photo">攝影系列</span></li>
 			<li><span class="filter hvr-underline-from-left" data-filter="drawing">插畫系列</span></li>
-			<li><span class="filter hvr-underline-from-left" data-filter="logo">Logo系列</span></li>
-			<li><span class="filter hvr-underline-from-left" data-filter="card">名片系列</span></li>
+			<li><span class="filter hvr-underline-from-left" data-filter="adver">廣告系列</span></li>
+			<li><span class="filter hvr-underline-from-left" data-filter="cis">CIS系列</span></li>
 			<li><span class="filter hvr-underline-from-left" data-filter="illustrator">向量系列</span></li>
 		</ul>
 
@@ -182,69 +201,12 @@ $(function(){
 					</div>
 				</div>
 
-				<div class="col-md-3 col-sm-6 col-xs-12 portfolio card" data-cat="card">
-					<div class="portfolio-wrapper">
-						<img src="img/portfolios/card/4.jpg" alt=""/>
-						<div class="label">
-							<div class="label-text"><a class="text-title">Sonor's Design</a><span class="text-category">card</span>
-							</div>
-							<div class="label-bg"></div>
-						</div>
-					</div>
-				</div>
-
 				<div class="col-md-3 col-sm-6 col-xs-12 portfolio photo" data-cat="photo">
 					<div class="portfolio-wrapper">
 						<img src="img/portfolios/photo/1.jpg" alt=""/>
 						<div class="label">
 							<div class="label-text"><a class="text-title">Typography Company</a><span
 									class="text-category">photo</span>
-							</div>
-							<div class="label-bg"></div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-md-3 col-sm-6 col-xs-12 portfolio poster" data-cat="poster">
-					<div class="portfolio-wrapper">
-						<img src="img/portfolios/poster/3.jpg" alt=""/>
-						<div class="label">
-							<div class="label-text"><a class="text-title">Weatherette</a> <span
-									class="text-category">poster</span>
-							</div>
-							<div class="label-bg"></div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-md-3 col-sm-6 col-xs-12 portfolio photo" data-cat="photo">
-					<div class="portfolio-wrapper">
-						<img src="img/portfolios/photo/4.jpg" alt=""/>
-						<div class="label">
-							<div class="label-text"><a class="text-title">BMF</a> <span
-									class="text-category">photo</span></div>
-							<div class="label-bg"></div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-md-3 col-sm-6 col-xs-12 portfolio photo" data-cat="photo">
-					<div class="portfolio-wrapper">
-						<img src="img/portfolios/photo/5.jpg" alt=""/>
-						<div class="label">
-							<div class="label-text"><a class="text-title">Techlion</a> <span
-									class="text-category">photo</span></div>
-							<div class="label-bg"></div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-md-3 col-sm-6 col-xs-12 portfolio logo" data-cat="logo">
-					<div class="portfolio-wrapper">
-						<img src="img/portfolios/logo/1.jpg" alt=""/>
-						<div class="label">
-							<div class="label-text"><a class="text-title">KittyPic</a> <span
-									class="text-category">Logo</span>
 							</div>
 							<div class="label-bg"></div>
 						</div>
@@ -262,6 +224,108 @@ $(function(){
 					</div>
 				</div>
 
+				<div class="col-md-3 col-sm-6 col-xs-12 portfolio poster" data-cat="poster">
+					<div class="portfolio-wrapper">
+						<img src="img/portfolios/poster/3.jpg" alt=""/>
+						<div class="label">
+							<div class="label-text"><a class="text-title">Weatherette</a> <span
+									class="text-category">poster</span>
+							</div>
+							<div class="label-bg"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-3 col-sm-6 col-xs-12 portfolio poster" data-cat="poster">
+					<div class="portfolio-wrapper">
+						<img src="img/portfolios/poster/9.jpg" alt=""/>
+						<div class="label">
+							<div class="label-text"><a class="text-title">Sonor's Design</a><span class="text-category">poster</span>
+							</div>
+							<div class="label-bg"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-3 col-sm-6 col-xs-12 portfolio poster" data-cat="poster">
+					<div class="portfolio-wrapper">
+						<img src="img/portfolios/poster/5.jpg" alt=""/>
+						<div class="label">
+							<div class="label-text"><a class="text-title">Sonor's Design</a><span class="text-category">poster</span>
+							</div>
+							<div class="label-bg"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-3 col-sm-6 col-xs-12 portfolio photo" data-cat="photo">
+					<div class="portfolio-wrapper">
+						<img src="img/portfolios/photo/4.jpg" alt=""/>
+						<div class="label">
+							<div class="label-text"><a class="text-title">BMF</a> <span
+									class="text-category">photo</span></div>
+							<div class="label-bg"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-3 col-sm-6 col-xs-12 portfolio poster" data-cat="poster">
+					<div class="portfolio-wrapper">
+						<img src="img/portfolios/poster/7.jpg" alt=""/>
+						<div class="label">
+							<div class="label-text"><a class="text-title">BMF</a> <span
+									class="text-category">poster</span></div>
+							<div class="label-bg"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-3 col-sm-6 col-xs-12 portfolio illustrator" data-cat="illustrator">
+					<div class="portfolio-wrapper">
+						<img src="img/portfolios/illustrator/2.jpg" alt=""/>
+						<div class="label">
+							<div class="label-text"><a class="text-title">Bird Document</a><span
+									class="text-category">illustrator</span></div>
+							<div class="label-bg"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-3 col-sm-6 col-xs-12 portfolio photo" data-cat="photo">
+					<div class="portfolio-wrapper">
+						<img src="img/portfolios/photo/5.jpg" alt=""/>
+						<div class="label">
+							<div class="label-text"><a class="text-title">Techlion</a> <span
+									class="text-category">photo</span></div>
+							<div class="label-bg"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-3 col-sm-6 col-xs-12 portfolio adver" data-cat="adver">
+					<div class="portfolio-wrapper">
+						<img src="img/portfolios/adver/1.jpg" alt=""/>
+						<div class="label">
+							<div class="label-text"><a class="text-title">KittyPic</a> <span
+									class="text-category">adver</span>
+							</div>
+							<div class="label-bg"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-3 col-sm-6 col-xs-12 portfolio poster" data-cat="poster">
+					<div class="portfolio-wrapper">
+						<img src="img/portfolios/poster/8.jpg" alt=""/>
+						<div class="label">
+							<div class="label-text"><a class="text-title">KittyPic</a> <span
+									class="text-category">poster</span>
+							</div>
+							<div class="label-bg"></div>
+						</div>
+					</div>
+				</div>
+
 				<div class="col-md-3 col-sm-6 col-xs-12 portfolio photo" data-cat="photo">
 					<div class="portfolio-wrapper">
 						<img src="img/portfolios/photo/2.jpg" alt=""/>
@@ -274,24 +338,49 @@ $(function(){
 					</div>
 				</div>
 
-				<div class="col-md-3 col-sm-6 col-xs-12 portfolio logo" data-cat="logo">
+				<div class="col-md-3 col-sm-6 col-xs-12 portfolio poster" data-cat="poster">
 					<div class="portfolio-wrapper">
-						<img src="img/portfolios/logo/6.jpg" alt=""/>
+						<img src="img/portfolios/poster/10.jpg" alt=""/>
 						<div class="label">
-							<div class="label-text"><a class="text-title">Mobi Sock</a> <span
-									class="text-category">Logo</span>
+							<div class="label-text"><a class="text-title">QR Quick Response</a> <span
+									class="text-category">poster</span>
 							</div>
 							<div class="label-bg"></div>
 						</div>
 					</div>
 				</div>
 
-				<div class="col-md-3 col-sm-6 col-xs-12 portfolio logo" data-cat="logo">
+				<div class="col-md-3 col-sm-6 col-xs-12 portfolio poster" data-cat="poster">
 					<div class="portfolio-wrapper">
-						<img src="img/portfolios/logo/7.jpg" alt=""/>
+						<img src="img/portfolios/poster/11.jpg" alt=""/>
 						<div class="label">
-							<div class="label-text"><a class="text-title">Village Community Church</a> <span
-									class="text-category">Logo</span></div>
+							<div class="label-text"><a class="text-title">QR Quick Response</a> <span
+									class="text-category">poster</span>
+							</div>
+							<div class="label-bg"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-3 col-sm-6 col-xs-12 portfolio poster" data-cat="poster">
+					<div class="portfolio-wrapper">
+						<img src="img/portfolios/poster/12.jpg" alt=""/>
+						<div class="label">
+							<div class="label-text"><a class="text-title">QR Quick Response</a> <span
+									class="text-category">poster</span>
+							</div>
+							<div class="label-bg"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-3 col-sm-6 col-xs-12 portfolio poster" data-cat="poster">
+					<div class="portfolio-wrapper">
+						<img src="img/portfolios/poster/13.jpg" alt=""/>
+						<div class="label">
+							<div class="label-text"><a class="text-title">QR Quick Response</a> <span
+									class="text-category">poster</span>
+							</div>
 							<div class="label-bg"></div>
 						</div>
 					</div>
@@ -308,34 +397,12 @@ $(function(){
 					</div>
 				</div>
 
-				<div class="col-md-3 col-sm-6 col-xs-12 portfolio card" data-cat="card">
-					<div class="portfolio-wrapper">
-						<img src="img/portfolios/card/3.jpg" alt=""/>
-						<div class="label">
-							<div class="label-text"><a class="text-title">Backend Admin</a> <span class="text-category">card</span>
-							</div>
-							<div class="label-bg"></div>
-						</div>
-					</div>
-				</div>
-
 				<div class="col-md-3 col-sm-6 col-xs-12 portfolio drawing" data-cat="drawing">
 					<div class="portfolio-wrapper">
 						<img src="img/portfolios/drawing/1.jpg" alt=""/>
 						<div class="label">
 							<div class="label-text"><a class="text-title">Instagram</a> <span
 									class="text-category">drawing</span>
-							</div>
-							<div class="label-bg"></div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-md-3 col-sm-6 col-xs-12 portfolio card" data-cat="card">
-					<div class="portfolio-wrapper">
-						<img src="img/portfolios/card/2.jpg" alt=""/>
-						<div class="label">
-							<div class="label-text"><a class="text-title">Student Guide</a> <span class="text-category">card</span>
 							</div>
 							<div class="label-bg"></div>
 						</div>
@@ -366,35 +433,123 @@ $(function(){
 					</div>
 				</div>
 
-				<div class="col-md-3 col-sm-6 col-xs-12 portfolio card" data-cat="card">
+				<div class="col-md-3 col-sm-6 col-xs-12 portfolio cis" data-cat="cis">
 					<div class="portfolio-wrapper">
-						<img src="img/portfolios/card/1.jpg" alt=""/>
+						<img src="img/portfolios/cis/1.jpg" alt=""/>
 						<div class="label">
 							<div class="label-text"><a class="text-title">Note</a> <span
-									class="text-category">card</span>
+									class="text-category">cis</span>
 							</div>
 							<div class="label-bg"></div>
 						</div>
 					</div>
 				</div>
 
-				<div class="col-md-3 col-sm-6 col-xs-12 portfolio logo" data-cat="logo">
+				<div class="col-md-3 col-sm-6 col-xs-12 portfolio cis" data-cat="cis">
 					<div class="portfolio-wrapper">
-						<img src="img/portfolios/logo/3.jpg" alt=""/>
+						<img src="img/portfolios/cis/2.jpg" alt=""/>
 						<div class="label">
-							<div class="label-text"><a class="text-title">Native Designers</a> <span
-									class="text-category">Logo</span></div>
+							<div class="label-text"><a class="text-title">Student Guide</a> <span class="text-category">cis</span>
+							</div>
 							<div class="label-bg"></div>
 						</div>
 					</div>
 				</div>
 
-				<div class="col-md-3 col-sm-6 col-xs-12 portfolio logo" data-cat="logo">
+				<div class="col-md-3 col-sm-6 col-xs-12 portfolio cis" data-cat="cis">
 					<div class="portfolio-wrapper">
-						<img src="img/portfolios/logo/4.jpg" alt=""/>
+						<img src="img/portfolios/cis/3.jpg" alt=""/>
+						<div class="label">
+							<div class="label-text"><a class="text-title">Student Guide</a> <span class="text-category">cis</span>
+							</div>
+							<div class="label-bg"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-3 col-sm-6 col-xs-12 portfolio cis" data-cat="cis">
+					<div class="portfolio-wrapper">
+						<img src="img/portfolios/cis/5.jpg" alt=""/>
+						<div class="label">
+							<div class="label-text"><a class="text-title">Student Guide</a> <span class="text-category">cis</span>
+							</div>
+							<div class="label-bg"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-3 col-sm-6 col-xs-12 portfolio adver" data-cat="adver">
+					<div class="portfolio-wrapper">
+						<img src="img/portfolios/adver/3.jpg" alt=""/>
+						<div class="label">
+							<div class="label-text"><a class="text-title">Native Designers</a> <span
+									class="text-category">adver</span></div>
+							<div class="label-bg"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-3 col-sm-6 col-xs-12 portfolio poster" data-cat="poster">
+					<div class="portfolio-wrapper">
+						<img src="img/portfolios/poster/14.jpg" alt=""/>
+						<div class="label">
+							<div class="label-text"><a class="text-title">Native Designers</a> <span
+									class="text-category">poster</span></div>
+							<div class="label-bg"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-3 col-sm-6 col-xs-12 portfolio poster" data-cat="poster">
+					<div class="portfolio-wrapper">
+						<img src="img/portfolios/poster/16.jpg" alt=""/>
+						<div class="label">
+							<div class="label-text"><a class="text-title">Native Designers</a> <span
+									class="text-category">poster</span></div>
+							<div class="label-bg"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-3 col-sm-6 col-xs-12 portfolio poster" data-cat="poster">
+					<div class="portfolio-wrapper">
+						<img src="img/portfolios/poster/15.jpg" alt=""/>
+						<div class="label">
+							<div class="label-text"><a class="text-title">Native Designers</a> <span
+									class="text-category">poster</span></div>
+							<div class="label-bg"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-3 col-sm-6 col-xs-12 portfolio poster" data-cat="poster">
+					<div class="portfolio-wrapper">
+						<img src="img/portfolios/poster/17.jpg" alt=""/>
+						<div class="label">
+							<div class="label-text"><a class="text-title">Native Designers</a> <span
+									class="text-category">poster</span></div>
+							<div class="label-bg"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-3 col-sm-6 col-xs-12 portfolio adver" data-cat="adver">
+					<div class="portfolio-wrapper">
+						<img src="img/portfolios/adver/2.jpg" alt=""/>
+						<div class="label">
+							<div class="label-text"><a class="text-title">Speciallisterne</a> <span
+									class="text-category">adver</span></div>
+							<div class="label-bg"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-3 col-sm-6 col-xs-12 portfolio adver" data-cat="adver">
+					<div class="portfolio-wrapper">
+						<img src="img/portfolios/adver/4.jpg" alt=""/>
 						<div class="label">
 							<div class="label-text"><a class="text-title">Bookworm</a> <span
-									class="text-category">Logo</span>
+									class="text-category">adver</span>
 							</div>
 							<div class="label-bg"></div>
 						</div>
@@ -413,23 +568,24 @@ $(function(){
 					</div>
 				</div>
 
+				<div class="col-md-3 col-sm-6 col-xs-12 portfolio drawing" data-cat="drawing">
+					<div class="portfolio-wrapper">
+						<img src="img/portfolios/drawing/6.jpg" alt=""/>
+						<div class="label">
+							<div class="label-text"><a class="text-title">Sandwich</a> <span
+									class="text-category">drawing</span>
+							</div>
+							<div class="label-bg"></div>
+						</div>
+					</div>
+				</div>
+
 				<div class="col-md-3 col-sm-6 col-xs-12 portfolio photo" data-cat="photo">
 					<div class="portfolio-wrapper">
 						<img src="img/portfolios/photo/3.jpg" alt=""/>
 						<div class="label">
 							<div class="label-text"><a class="text-title">Reality</a> <span
 									class="text-category">photo</span></div>
-							<div class="label-bg"></div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-md-3 col-sm-6 col-xs-12 portfolio logo" data-cat="logo">
-					<div class="portfolio-wrapper">
-						<img src="img/portfolios/logo/2.jpg" alt=""/>
-						<div class="label">
-							<div class="label-text"><a class="text-title">Speciallisterne</a> <span
-									class="text-category">Logo</span></div>
 							<div class="label-bg"></div>
 						</div>
 					</div>
@@ -452,7 +608,9 @@ $(function(){
 
     <!--Lightbox-->
     $(function(){
-        $('[data-rel="lightbox"]').lightbox();
+        $('[data-rel="lightbox"]').lightbox({
+			arrow:true
+		});
     });
 </script>
 </body>
