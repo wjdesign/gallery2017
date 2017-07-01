@@ -48,6 +48,7 @@ body {
 }
 #intro-bar .intro-main p {
     padding-left: 15%;
+    padding-right: 15%;
 }
 #intro-bar .intro-main a {
     border-left: 3px solid #fff;
@@ -55,6 +56,9 @@ body {
     text-overflow : ellipsis;
     white-space : nowrap;
     padding-left: 5px;
+}
+#intro-bar .intro-main p.info-text {
+    margin-top: 5vh;
 }
 #intro-bar .intro-main p,
 #intro-bar .intro-main p a {
@@ -67,6 +71,9 @@ body {
 #intro-bar .intro-main p a:hover {
     color: #ffc2c2;
     text-decoration: none;
+}
+#intro-bar .intro-main p a span {
+    float: right;
 }
 #intro-bar .intro-main .intro-photo {
     width: 100%;
@@ -127,15 +134,30 @@ a.text-title:hover {
     color: #b30000;
     text-decoration: none;
 }
+.portfolio .text-category {
+    text-overflow : ellipsis;
+    white-space : nowrap;
+}
 
 @media only screen and (max-width: 767px) {
-    #intro-bar.intro-bar {
-        /*display: none;*/
-        /*right: -74px;*/
+
+    #intro-bar .intro-main p {
+        padding-left: 5%;
+        padding-right: 5%;
     }
 
     #intro-bar .intro-main {
         width: 240px;
+    }
+
+    #portfoliolist .portfolio-wrapper {
+        border: 2px solid #e95a44;
+    }
+
+    #intro-bar .intro-main p.info-text {
+        margin-top: 4vh;
+        height: 150px;
+        overflow-x: scroll;
     }
 }
 
