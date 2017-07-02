@@ -125,12 +125,17 @@ body {
     padding: 0;
 }
 #header ul#filters-s li {
-    padding: 10px 0;
+    line-height: 45px;
     border-bottom: 1px solid #de6a58;
     box-shadow: 0 1px 0 #803529;
 }
 #header ul#filters-s li span {
     display: block;
+}
+#header ul#filters-s li span.active {
+    background: #d87254;
+    color: #712014;
+    transition: .3s;
 }
 
 /* portfoliolist */
