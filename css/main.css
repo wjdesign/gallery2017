@@ -59,6 +59,13 @@ body {
 }
 #intro-bar .intro-main p.info-text {
     margin-top: 5vh;
+    padding-bottom: 3vh;
+    height: 290px;
+    overflow-x: auto;
+}
+#intro-bar .intro-main p.info-text span {
+    color: #5a1106;
+    font-weight: 600;
 }
 #intro-bar .intro-main p,
 #intro-bar .intro-main p a {
@@ -156,6 +163,7 @@ a.text-title:hover {
 
     #intro-bar .intro-main p.info-text {
         margin-top: 4vh;
+        padding-bottom: 2vh;
         height: 150px;
         overflow-x: scroll;
     }
